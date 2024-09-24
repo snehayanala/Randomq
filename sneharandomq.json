@@ -1,0 +1,81 @@
+[
+    {
+        "id": "7cd8a16a651b64f2",
+        "type": "inject",
+        "z": "ce9834f536ebfce3",
+        "name": "",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "678e02f150980aef"
+            ]
+        ]
+    },
+    {
+        "id": "678e02f150980aef",
+        "type": "http request",
+        "z": "ce9834f536ebfce3",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.api-ninjas.com/v1/quotes?category=education&X-Api-Key=OxQsNAfHQmK2qeMwnFoOtB9CxjGWkJ8M22E7kxDA",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "8aa5789e4ed3c871"
+            ]
+        ]
+    },
+    {
+        "id": "0fa587fd4dd34a51",
+        "type": "debug",
+        "z": "ce9834f536ebfce3",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8aa5789e4ed3c871",
+        "type": "function",
+        "z": "ce9834f536ebfce3",
+        "name": "function 1",
+        "func": "var quote = JSON.parse(msg.payload);\nmsg.payload = quote ;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "0fa587fd4dd34a51"
+            ]
+        ]
+    }
+]
